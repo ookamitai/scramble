@@ -1,5 +1,5 @@
 #[derive(Clone, PartialEq, Eq)]
-pub(crate) struct ColoredChar {
+pub struct ColoredChar {
     _char: char,
     _prefix: String,
 }
@@ -10,6 +10,7 @@ pub struct ColoredText {
     _prefix: String,
 }
 
+#[allow(unused)]
 pub mod colors {
     pub const BLACK: &str = "\x1b[30m";
     pub const RED: &str = "\x1b[31m";
@@ -42,19 +43,17 @@ impl ColoredText {
     }
 
     pub fn new_plain(c: String) -> Self {
-        let s = ColoredText {
+        ColoredText {
             _string: c,
             _prefix: colors::RESET.to_string(),
-        };
-        s
+        }
     }
 
     pub fn new(c: String, p: String) -> Self {
-        let s = ColoredText {
+        ColoredText {
             _string: c,
             _prefix: p,
-        };
-        s
+        }
     }
 }
 
@@ -68,10 +67,9 @@ impl ColoredChar {
     }
 
     pub fn new(c: char, p: String) -> Self {
-        let s = ColoredChar {
+        ColoredChar {
             _char: c,
             _prefix: p,
-        };
-        s
+        }
     }
 }

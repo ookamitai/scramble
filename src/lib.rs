@@ -1,5 +1,5 @@
-mod scr;
-use scr::*;
+pub mod scr;
+pub use scr::*;
 
 #[cfg(test)]
 mod tests {

@@ -14,6 +14,12 @@ pub struct Scr {
     _w: usize, _h: usize,
 }
 
+impl Default for Scr {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl Scr {
     pub fn dimensions(&self) -> (usize, usize) {
         (self._w, self._h)
@@ -21,13 +27,11 @@ impl Scr {
 
     pub fn new() -> Self {
         let (w, h) = get_dimensions();
-        dbg!(w, h);
-        let new = Self {
+        Self {
             _buffer: vec![vec![colored_text::ColoredChar::new(' ', "".to_string()); w].clone(); h],
             _current: vec![vec![colored_text::ColoredChar::new('*', "".to_string()); w].clone(); h],
             _w: w, _h: h,
-        };
-        new
+        }
     }
 
     pub fn update(&mut self) {
