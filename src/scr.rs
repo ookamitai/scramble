@@ -7,7 +7,7 @@ use colored_text::*;
 /// _requires the `term_size` crate_
 /// 
 /// ## Returns 
-/// - Returns (80, 24) if the operation failed, or
+/// - Returns (80, 24) if all of the streams are not ttys or the subprocess returns any errors, or
 /// 
 /// - A tuple of (usize, usize):
 ///   - `[0]`: width of the window  
@@ -34,7 +34,7 @@ pub fn get_dimensions() -> (usize, usize) {
 /// 
 /// ## Fields
 /// - `_buffer: Vec<Vec<ColoredChar>>`: A grid (_w * _h) filled with chars of desired colors. This is only for buffering.
-/// - '_current: Vec<Vec<ColoredChar>>': A grid (_w * _h) describing the current state of the terminal window.
+/// - `_current: Vec<Vec<ColoredChar>>`: A grid (_w * _h) describing the current state of the terminal window.
 /// - `_w: usize, _h: usize`: The dimensions of the terminal window.
 pub struct Scr {
     _buffer: Vec<Vec<ColoredChar>>,
