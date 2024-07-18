@@ -1,16 +1,46 @@
+/// A char with a desired color.
+/// 
+/// Stores a `char` and a string containing the desired color.
+/// 
+/// ## Fields
+/// - `_char: char`: A simple char.
+/// - `_prefix: String`: A string containing color information.
 #[derive(Clone, PartialEq, Eq)]
 pub struct ColoredChar {
     _char: char,
     _prefix: String,
 }
 
+/// A string with a desired color.
+/// 
+/// Stores a `String` and a string containing the desired color.
+/// 
+/// ## Fields
+/// - `string: char`: A simple string.
+/// - `_prefix: String`: A string containing color information.
+/// ## Example
+/// ```
+/// let mut scr = scramble::Scr::new();
+/// let mut x: usize = 0;
+/// scr.set_text(&mut x, 0, &scramble::ColoredText::new("hello, world!".to_string(), scramble::colors::RED.to_string()))
+///    .update();
+/// ```
 #[derive(Clone, PartialEq, Eq)]
 pub struct ColoredText {
     _string: String, 
     _prefix: String,
 }
 
-#[allow(unused)]
+/// Pre-defined color constants for user convenience.
+/// 
+/// ## Example
+/// ```
+/// let mut scr = scramble::Scr::new();
+/// let mut x: usize = 0;
+/// scr.set_text(&mut x, 0, &scramble::ColoredText::new("hello, world!".to_string(), scramble::colors::RED.to_string()))
+///    .update();
+/// ```
+#[allow(unused_variables)]
 pub mod colors {
     pub const BLACK: &str = "\x1b[30m";
     pub const RED: &str = "\x1b[31m";
@@ -34,14 +64,29 @@ pub mod colors {
 }
 
 impl ColoredText {
+    /// Gets the contents of a `ColoredText` object.
+    /// 
+    /// ## Returns
+    /// A String reference (`&String`) to the contents.
     pub fn contents(&self) -> &String {
         &self._string
     }
 
+    /// Gets the prefix of a `ColoredText` object.
+    /// 
+    /// ## Returns
+    /// A String reference (`&String`) to the prefix.
     pub fn prefix(&self) -> &String {
         &self._prefix
     }
 
+    /// Creates a new `ColoredText` object with white text and black background.
+    /// 
+    /// ## Parameters
+    /// - `c: String`: The contents of this `ColoredText` object.
+    /// 
+    /// ## Returns
+    /// A `ColoredText` object.
     pub fn new_plain(c: String) -> Self {
         ColoredText {
             _string: c,
@@ -49,6 +94,14 @@ impl ColoredText {
         }
     }
 
+    // Creates a new `ColoredText` object.
+    /// 
+    /// ## Parameters
+    /// - `c: String`: The contents of this `ColoredText` object.
+    /// - `p: String`: The desired color.
+    /// 
+    /// ## Returns
+    /// A `ColoredText` object.
     pub fn new(c: String, p: String) -> Self {
         ColoredText {
             _string: c,
@@ -58,14 +111,30 @@ impl ColoredText {
 }
 
 impl ColoredChar {
+    /// Gets the contents of a `ColoredChar` object.
+    /// 
+    /// ## Returns
+    /// A String reference (`&String`) to the contents.
     pub fn contents(&self) -> &char {
         &self._char
     }
 
+    /// Gets the prefix of a `ColoredChar` object.
+    /// 
+    /// ## Returns
+    /// A String reference (`&String`) to the prefix.
     pub fn prefix(&self) -> &String {
         &self._prefix
     }
 
+    // Creates a new `ColoredChar` object.
+    /// 
+    /// ## Parameters
+    /// - `c: char`: The contents of this `ColoredChar` object.
+    /// - `p: String`: The desired color.
+    /// 
+    /// ## Returns
+    /// A `ColoredChar` object.
     pub fn new(c: char, p: String) -> Self {
         ColoredChar {
             _char: c,

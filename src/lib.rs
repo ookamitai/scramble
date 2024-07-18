@@ -1,17 +1,15 @@
-pub mod scr;
-pub use scr::*;
+mod scr;
+pub use scr::colored_text::*;
+pub use scr::Scr;
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use scr::colored_text::colors;
-    use scr::colored_text::ColoredText;
     #[test]
     fn it_works() {
         let mut scr = scr::Scr::new();
         let mut x: usize = 0;
         let mut tmp = String::new();
-        let (w, h) = scr.dimensions();
         scr.set_text(&mut x, 3, &ColoredText::new("hi this is red".to_string(), colors::RED.to_string()))
             .update();
         scr.set_text(&mut x, 4, &ColoredText::new("hi this is blue".to_string(), colors::BLUE.to_string()))
