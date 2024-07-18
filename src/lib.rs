@@ -3,28 +3,28 @@ mod scr;
 #[cfg(test)]
 mod tests {
     use super::*;
-
+    use scr::colored_text::colors;
+    use scr::colored_text::ColoredText;
     #[test]
     fn it_works() {
         let mut scr = scr::Scr::new();
         let mut x: usize = 0;
         let mut tmp = String::new();
         let (w, h) = scr.dimensions();
-        scr.set_text(&mut x, 0, &"hello".to_string())
-                        .set_text(&mut x, 1, &"screen api test".to_string())
-                        .set_text(&mut x, 2, &"and this is the third line".to_string())
-                        .set_text(&mut x, 3, &"we can chain multiple .set_text() together".to_string())
-                        .set_text(&mut x, 23, &("this window has ".to_string() + &w.to_string() + &" cols and ".to_string() + &h.to_string() + &" rows".to_string()))
-                        .update();
+        scr.set_text(&mut x, 3, &ColoredText::new("hi this is red".to_string(), colors::RED.to_string()))
+            .update();
+        scr.set_text(&mut x, 4, &ColoredText::new("hi this is blue".to_string(), colors::BLUE.to_string()))
+            .update();
+        scr.set_text(&mut x, 5, &ColoredText::new("hi this has green bg and black text".to_string(), colors::BG_GREEN.to_string() + &colors::BLACK.to_string()))
+            .update();
+
         for i in 0..30000 {
-            tmp = (i + 1).to_string();
-            scr.set_text(&mut x, 7, &("look at me! im incrementing -> ".to_string() + &tmp))
-                .update();
+            scr.set_text(&mut x, 7, &ColoredText::new("look im incrementing in orange -> ".to_string() + &(i+1).to_string(), colors::MAGENTA.to_string()))
+            .update();
         }
-        scr.set_text(&mut x, 8, &"done!".to_string());
-        scr.update();
-        std::io::stdin().read_line(&mut tmp).unwrap();
-        scr.clear().update();
+
+        scr.set_text(&mut x, 9, &ColoredText::new_plain("done! Press any key to continue".to_string()))
+            .update();
         std::io::stdin().read_line(&mut tmp).unwrap();
     }
 }
