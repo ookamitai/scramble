@@ -1,4 +1,4 @@
-# Scramble - A terminal display API for Rust
+# Scramble: A terminal display API for Rust
 
 ## Getting Started
 
@@ -14,3 +14,5 @@ scramble = { git = "https://github.com/ookamitai/scramble.git" }
 ## Documentation
 
 [Here](https://ookamitai.github.io/scramble/scramble/index.html)
+
+Note that there are some examples included in the documentation, so I'll not add a examples section.
