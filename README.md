@@ -13,4 +13,4 @@ scramble = { git = "https://github.com/ookamitai/scramble.git" }
 
 ## Documentation
 
-__Add the link once the page finishes deploying__
+[Here](https://ookamitai.github.io/scramble/scramble/index.html)

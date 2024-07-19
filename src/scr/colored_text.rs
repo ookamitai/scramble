@@ -16,7 +16,7 @@ pub struct ColoredChar {
 /// Stores a `String` and a string containing the desired color.
 /// 
 /// ## Fields
-/// - `string: char`: A simple string.
+/// - `_string: String`: A simple string.
 /// - `_prefix: String`: A string containing color information.
 /// ## Example
 /// ```
